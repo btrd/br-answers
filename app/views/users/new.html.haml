@@ -1,0 +1,16 @@
+= form_for @user, url: {action: "create"} do |f|
+  = f.label :naissance
+  = f.date_field :naissance
+  = f.label :sexe
+  = f.text_field :sexe
+  = f.label :etat_civil
+  = f.text_field :etat_civil
+  = f.label :population_foyer
+  = f.number_field :pop_foyer, in: 1.0..200.0, value: 1
+  = f.label :population_enfant
+  = f.number_field :pop_enfant, in: 0.0..200.0, value: 0
+  = f.label :population_animaux
+  = f.number_field :pop_animaux, in: 0.0..200.0, value: 0
+  = f.label :revenus
+  = f.text_field :revenus
+  = f.submit "S'inscrire"

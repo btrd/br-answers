@@ -1,0 +1,4 @@
+= form_for @user, url: {action: "connect"} do |f|
+  = f.label :mot_de_passe
+  = f.text_field :mdp
+= link_to "Se créer un compte", new_user_path
