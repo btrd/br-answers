@@ -2,9 +2,9 @@
   = f.label :naissance
   = f.date_field :naissance
   = f.label :sexe
-  = f.text_field :sexe
+  = select("post", "sexe", %w[Homme Femme], {}, { index: nil })
   = f.label :etat_civil
-  = f.text_field :etat_civil
+  = select("post", "etat_civil", %w[Marié(e) Célibataire Veuf/Veuve], {}, { index: nil })
   = f.label :population_foyer
   = f.number_field :pop_foyer, in: 1.0..200.0, value: 1
   = f.label :population_enfant

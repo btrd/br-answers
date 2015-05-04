@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
   def index
-    if session[:user_co] == true
+    if session[:user_co]
       redirect_to sondages_url
     end
     @user = User.new
   end
 
   def connect
-    params[:user][:mdp]
+    session[:user] = User.find_by mdp: params[:user][:mdp]
+    session[:user_co] = true
+
     redirect_to sondages_url
   end
 
@@ -16,7 +18,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    User.create create_params
+    session[:user] = User.create create_params
+    session[:user_co] = true
+
+    redirect_to sondages_url
+  end
+
+  def deco
+    session[:user_co] = false
     redirect_to index
   end
 

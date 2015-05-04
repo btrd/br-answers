@@ -1,0 +1,9 @@
+%table
+  %tr
+    %th Nom
+    %th Date de publication
+ 
+  - @sondages.each do |s|
+    %tr
+      %td= s.nom
+      %td= s.date_publication

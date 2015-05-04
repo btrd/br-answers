@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       post :connect
+      get :deco
     end
   end
   resources :sondages

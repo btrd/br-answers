@@ -10,4 +10,7 @@
   %body
     .header
       %h1.rainbow Beam Rainbow
+      - if session[:user_co]
+        = session[:user]["mdp"]
+        = link_to "Se déconnecter", deco_users_path
     = yield
