@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.2.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
@@ -38,6 +39,8 @@ gem 'figaro'
 
 # User Haml not erb
 gem "haml-rails", "~> 0.9"
+
+gem "rails_12factor"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
