@@ -1,9 +1,11 @@
-%p Sondage 
+%h2= @sondage.nom
 - i = 0
-- @sondage.questions.each do |q|
-  - @q = q
-  - i += 1
-  = "Question " + i.to_s + " sur " + @nb_quest.to_s
-  %br
-  = render template: "questions/show", object: @q
-  %br
+= form_tag("/reponses", method: "post") do
+  - @sondage.questions.each do |question|
+    - i += 1
+    %h3= "Question " + i.to_s + " sur " + @nb_quest.to_s
+    %br
+    = render question
+    %br
+
+  = submit_tag("Enregistrer")
