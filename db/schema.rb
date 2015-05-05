@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150505102145) do
+ActiveRecord::Schema.define(version: 20150505212609) do
 
   create_table "choixes", force: :cascade do |t|
     t.string   "valeur",      limit: 255
@@ -25,6 +25,17 @@ ActiveRecord::Schema.define(version: 20150505102145) do
     t.string   "mdp",        limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "graph", force: :cascade do |t|
+    t.integer "id_sondage",    limit: 4
+    t.integer "id_question",   limit: 4
+    t.integer "reponse_given", limit: 4
+    t.boolean "reponse_spe",   limit: 1
+    t.boolean "moyenne",       limit: 1
+    t.boolean "pourcentage",   limit: 1
+    t.string  "pop_cible",     limit: 255
+    t.string  "axe_abscisse",  limit: 255
   end
 
   create_table "questions", force: :cascade do |t|
