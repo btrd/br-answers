@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150505092807) do
+ActiveRecord::Schema.define(version: 20150505102145) do
 
   create_table "choixes", force: :cascade do |t|
     t.string   "valeur",      limit: 255
@@ -73,6 +73,13 @@ ActiveRecord::Schema.define(version: 20150505092807) do
     t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "naissance"
+    t.string   "sexe",                   limit: 255
+    t.string   "etat_civil",             limit: 255
+    t.integer  "pop_foyer",              limit: 4
+    t.integer  "pop_enfant",             limit: 4
+    t.integer  "pop_animaux",            limit: 4
+    t.integer  "revenus",                limit: 4
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

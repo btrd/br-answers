@@ -9,10 +9,20 @@
     = csrf_meta_tags
   %body
     .header
-      %h1.rainbow Beam Rainbow
-      - if session[:user_co]
-        = session[:user]["mdp"]
-        = link_to "Se déconnecter", deco_users_path
+      %h1
+        = link_to "Beam Rainbow", root_path, class: "rainbow"
       %p.notice= notice
       %p.alert= alert
+      %p.navbar
+      - if user_signed_in?
+        Connecté en tant que
+        = succeed "." do
+          %strong= current_user.email
+        = link_to 'Modifier mon profil', edit_user_registration_path
+        |
+        = link_to "Se déconnecter", destroy_user_session_path, method: :delete
+      - else
+        = link_to "S'enregistrer", new_user_registration_path
+        |
+        = link_to "Se connecter", new_user_session_path
     = yield
