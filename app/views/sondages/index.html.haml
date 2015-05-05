@@ -4,7 +4,7 @@
     - if s.questions.count > 0
       - if s.users.include? current_user
         %li.disabled{:role => "presentation"}
-          %a{:href => "/"}
+          %a
             = s.nom
             par
             = s.entreprise.nom
