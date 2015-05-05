@@ -19,8 +19,7 @@
         %p.navbar
           - if user_signed_in?
             Connecté en tant que
-            = succeed "." do
-              %strong= current_user.email
+            %strong= current_user.email
             = link_to 'Profil', edit_user_registration_path, class: 'btn btn-success'
             = link_to "Déconnexion", destroy_user_session_path, method: :delete, class: 'btn btn-warning'
           - else
