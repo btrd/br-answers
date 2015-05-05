@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'help/index'
+
   devise_for :users, :controllers => { registrations: 'registrations' }
   root 'sondages#index'
   resources :users
