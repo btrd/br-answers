@@ -1,55 +1,55 @@
-%h2
-  Modifier mon profil
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    = f.email_field :email, autofocus: true
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    %div
-      En attente de confirmation pour: #{resource.unconfirmed_email}
-  .field
-    = f.label :password, "Nouveau mot de passe"
-    = f.password_field :password, autocomplete: "off"
-  .field
-    = f.label :password_confirmation , "Confirmation"
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .field
-    = f.label :current_password, "Mot de passe actuel"
-    = f.password_field :current_password, autocomplete: "off", :required => "required"
-  .field
-    = f.label :naissance, "Date de naissance"
-    = f.date_field :naissance
-  .field
-    = "Actuel: " + resource.sexe
-    = f.label :sexe
-    %select{:name => "user[sexe]", :id => "user_sexe", :required => "required"}
-      %option
-      %option{:value => "Homme"} Homme
-      %option{:value => "Femme"} Femme
-  .field
-    = "Actuel: " + resource.etat_civil
-    = f.label :etat_civil
-    %select{:name => "user[etat_civil]", :id => "user_etat_civil", :required => "required"}
-      %option
-      %option{:value => "Célibataire"} Célibataire
-      %option{:value => "Marié(e)"} Marié(e)
-      %option{:value => "Veuf/Veuve"} Veuf/Veuve
-  .field
-    = f.label :pop_foyer, "Population foyer"
-    = f.number_field :pop_foyer, in: 1.0..200.0
-  .field
-    = f.label :pop_enfant, "Population enfant"
-    = f.number_field :pop_enfant, in: 0.0..200.0
-  .field
-    = f.label :pop_animaux, "Population animaux"
-    = f.number_field :pop_animaux, in: 0.0..200.0
-  .field
-    = f.label :revenus
-    = f.number_field :revenus, min: 0
-  .actions
-    = f.submit "Mettre à jour"
+%h2 Modifier mon profil
+.form_user
+  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+    = devise_error_messages!
+    .field
+      = f.label :email
+      = f.email_field :email, autofocus: true
+    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+      %div
+        En attente de confirmation pour: #{resource.unconfirmed_email}
+    .field
+      = f.label :password, "Nouveau mot de passe"
+      = f.password_field :password, autocomplete: "off"
+    .field
+      = f.label :password_confirmation , "Confirmation"
+      = f.password_field :password_confirmation, autocomplete: "off"
+    .field
+      = f.label :current_password, "Mot de passe actuel"
+      = f.password_field :current_password, autocomplete: "off", :required => "required"
+    .field
+      = f.label :naissance, "Date de naissance"
+      = f.date_field :naissance
+    .field
+      = f.label :sexe
+      %select{:name => "user[sexe]", :id => "user_sexe", :required => "required"}
+        %option
+        %option{:value => "Homme"} Homme
+        %option{:value => "Femme"} Femme
+      %span.current
+        = "Actuel: " + resource.sexe
+    .field
+      = f.label :etat_civil
+      %select{:name => "user[etat_civil]", :id => "user_etat_civil", :required => "required"}
+        %option
+        %option{:value => "Célibataire"} Célibataire
+        %option{:value => "Marié(e)"} Marié(e)
+        %option{:value => "Veuf/Veuve"} Veuf/Veuve
+      %span.current
+        = "Actuel: " + resource.etat_civil
+    .field
+      = f.label :pop_foyer, "Population foyer"
+      = f.number_field :pop_foyer, in: 1.0..200.0
+    .field
+      = f.label :pop_enfant, "Population enfant"
+      = f.number_field :pop_enfant, in: 0.0..200.0
+    .field
+      = f.label :pop_animaux, "Population animaux"
+      = f.number_field :pop_animaux, in: 0.0..200.0
+    .field
+      = f.label :revenus
+      = f.number_field :revenus, min: 0
+    .actions
+      = f.submit "Mettre à jour", :class => 'btn btn-success'
 %h3 Annuler mon compte
-%p
-  #{button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Êtes vous sûr ?" }, method: :delete}
-= link_to "Retour", root_path
+= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Êtes vous sûr ?" }, method: :delete, :class => 'btn btn-danger'

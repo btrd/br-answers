@@ -20,6 +20,9 @@ $nprogress-zindex: 10100;
 @import 'nprogress';
 @import 'nprogress-bootstrap';
 
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
 body {
   h1 {
     font-family: 'Nothing You Could Do', cursive;
@@ -33,6 +36,30 @@ body {
       a {
         text-decoration: none;
         color: black;
+      }
+    }
+  }
+  .content {
+    .form_user {
+      label {
+        width: 200px;
+      }
+      select, input {
+        width: 200px;
+      }
+      .current {
+        font-style: italic;
+      }
+    }
+    .form_user_co {
+      label {
+        width: 100px;
+      }
+      select, input {
+        width: 200px;
+      }
+      .current {
+        font-style: italic;
       }
     }
   }

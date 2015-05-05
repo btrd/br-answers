@@ -1,10 +1,13 @@
-%p Sondage 
-- @sondages.each do |s|
-  - if s.questions.count > 0
-    %li
+%h3 Sondage 
+%ul.nav.nav-pills
+  - @sondages.each do |s|
+    - if s.questions.count > 0
       - if s.users.include? current_user
-        ■
-        = s.nom
+        %li.disabled{:role => "presentation"}
+          %a{:href => "/"}
+            = s.nom
+            par
+            = s.entreprise.nom
       - else
-        □ 
-        = link_to s.nom, s
+        %li{:role => "presentation"}
+          = link_to s.nom + " par " + s.entreprise.nom, s
