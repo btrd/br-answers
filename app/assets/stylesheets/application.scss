@@ -13,6 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+$nprogress-color: black;
+$nprogress-height: 5px;
+$nprogress-zindex: 10100;
+@import 'nprogress';
+@import 'nprogress-bootstrap';
+
 body {
   h1 {
     font-family: 'Nothing You Could Do', cursive;
@@ -25,7 +32,7 @@ body {
       text-align: center;
       a {
         text-decoration: none;
-        color: red;
+        color: black;
       }
     }
   }

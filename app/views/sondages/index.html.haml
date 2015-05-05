@@ -1,5 +1,6 @@
 %p Sondage 
 - @sondages.each do |s|
-  %li= s.nom
-  - if s.users.include? current_user
-    DONE
+  %li
+    = link_to s.nom, s
+    - if s.users.include? current_user
+      DONE
