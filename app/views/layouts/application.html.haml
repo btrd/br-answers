@@ -13,4 +13,6 @@
       - if session[:user_co]
         = session[:user]["mdp"]
         = link_to "Se déconnecter", deco_users_path
+      %p.notice= notice
+      %p.alert= alert
     = yield

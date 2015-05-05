@@ -40,7 +40,11 @@ gem 'figaro'
 # User Haml not erb
 gem "haml-rails", "~> 0.9"
 
+# Scalingo
 gem "rails_12factor"
+
+# gestion user
+gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
