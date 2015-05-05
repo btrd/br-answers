@@ -3,44 +3,44 @@
   = devise_error_messages!
   .field
     = f.label :email
-    = f.email_field :email, autofocus: true
+    = f.email_field :email, autofocus: true, :required => "required"
   .field
     = f.label :password, "Mot de passe"
     - if @validatable
       %em
         (#{@minimum_password_length} caractères minimum)
-    = f.password_field :password, autocomplete: "off"
+    = f.password_field :password, autocomplete: "off", :required => "required"
   .field
     = f.label :password_confirmation, "Confirmation"
-    = f.password_field :password_confirmation, autocomplete: "off"
+    = f.password_field :password_confirmation, autocomplete: "off", :required => "required"
   .field
     = f.label :naissance, "Date de naissance"
-    = f.date_field :naissance
+    = f.date_field :naissance, :required => "required"
   .field
     = f.label :sexe
-    %select{:name => "user[sexe]", :id => "user_sexe"}
+    %select{:name => "user[sexe]", :id => "user_sexe", :required => "required"}
       %option
       %option{:value => "Homme"} Homme
       %option{:value => "Femme"} Femme
   .field
     = f.label :etat_civil
-    %select{:name => "user[etat_civil]", :id => "user_etat_civil"}
+    %select{:name => "user[etat_civil]", :id => "user_etat_civil", :required => "required"}
       %option
       %option{:value => "Célibataire"} Célibataire
       %option{:value => "Marié(e)"} Marié(e)
       %option{:value => "Veuf/Veuve"} Veuf/Veuve
   .field
     = f.label :pop_foyer, "Population foyer"
-    = f.number_field :pop_foyer, in: 1.0..200.0, value: 1
+    = f.number_field :pop_foyer, in: 1.0..200.0, value: 1, required: "required"
   .field
     = f.label :pop_enfant, "Population enfant"
-    = f.number_field :pop_enfant, in: 0.0..200.0, value: 0
+    = f.number_field :pop_enfant, in: 0.0..200.0, value: 0, required: "required"
   .field
     = f.label :pop_animaux, "Population animaux"
-    = f.number_field :pop_animaux, in: 0.0..200.0, value: 0
+    = f.number_field :pop_animaux, in: 0.0..200.0, value: 0, required: "required"
   .field
     = f.label :revenus
-    = f.number_field :revenus, in: 0.0..20000000000.0, value: 0
+    = f.number_field :revenus, in: 0.0..20000000000.0, value: 0, required: "required"
   .actions
     = f.submit "S'inscrire"
 = render "devise/shared/links"

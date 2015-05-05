@@ -16,21 +16,21 @@
     = f.password_field :password_confirmation, autocomplete: "off"
   .field
     = f.label :current_password, "Mot de passe actuel"
-    = f.password_field :current_password, autocomplete: "off"
+    = f.password_field :current_password, autocomplete: "off", :required => "required"
   .field
     = f.label :naissance, "Date de naissance"
     = f.date_field :naissance
   .field
     = "Actuel: " + resource.sexe
     = f.label :sexe
-    %select{:name => "user[sexe]", :id => "user_sexe"}
+    %select{:name => "user[sexe]", :id => "user_sexe", :required => "required"}
       %option
       %option{:value => "Homme"} Homme
       %option{:value => "Femme"} Femme
   .field
     = "Actuel: " + resource.etat_civil
     = f.label :etat_civil
-    %select{:name => "user[etat_civil]", :id => "user_etat_civil"}
+    %select{:name => "user[etat_civil]", :id => "user_etat_civil", :required => "required"}
       %option
       %option{:value => "Célibataire"} Célibataire
       %option{:value => "Marié(e)"} Marié(e)

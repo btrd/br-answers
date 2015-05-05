@@ -1,1 +1,9 @@
-= @sondage.nom
+%p Sondage 
+- i = 0
+- @sondage.questions.each do |q|
+  - @q = q
+  - i += 1
+  = "Question " + i.to_s + " sur " + @nb_quest.to_s
+  %br
+  = render template: "questions/show", object: @q
+  %br

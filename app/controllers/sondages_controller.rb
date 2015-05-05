@@ -5,8 +5,6 @@ class SondagesController < ApplicationController
 
   def show
     @sondage = Sondage.find(params[:id])
-    if @sondage == nil
-      redirect_to index
-    end
+    @nb_quest = @sondage.questions.count
   end
 end
