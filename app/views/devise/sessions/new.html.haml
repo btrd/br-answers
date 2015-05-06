@@ -1,4 +1,4 @@
-%h2 Se connecter
+%h3 Se connecter
 = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   .form_user_co
     .field
@@ -12,5 +12,6 @@
       = f.check_box :remember_me
       = f.label :remember_me, "Se souvenir de moi"
   .actions
-    = f.submit "Se connecter"
-= render "devise/shared/links"
+    = f.submit "Se connecter", class: "right btn btn-success"
+    - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+      = link_to "Mot de passe perdu", new_password_path(resource_name), class: "btn btn-warning"

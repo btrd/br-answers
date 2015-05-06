@@ -1,4 +1,4 @@
-%h2= @sondage.nom
+%h3= @sondage.nom
 - i = 0
 = form_tag("/reponses", method: "post") do
   - @sondage.questions.each do |question|

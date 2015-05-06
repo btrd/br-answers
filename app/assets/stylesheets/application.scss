@@ -45,13 +45,36 @@ body {
       margin-top: -65px;
     }
   }
+  form {
+    display: table;
+    margin: auto;
+  }
   .content {
+    .center {
+      display: table;
+      margin: auto;
+    }
+    .right {
+      float: right;
+    }
+    .btn {
+      margin-top: 5px;
+    }
+    .field {
+      margin-bottom: 10px;
+    }
+    input[input=text], input[input=email], input[input=password], input[input=text] {
+      height: 30px;
+    }
     .form_user {
       label {
-        width: 200px;
+        width: 160px;
       }
       select, input {
-        width: 200px;
+        width: 250px;
+      }
+      input[type=submit] {
+        width: initial;
       }
       .current {
         font-style: italic;

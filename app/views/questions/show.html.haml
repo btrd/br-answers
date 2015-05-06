@@ -1,20 +1,37 @@
 %h3= @sondage.nom
-%h4= @question.valeur
-= form_tag(sondage_question_reponses_path(@sondage,@question), method: "post") do
+- pourc = session["next_question"] * 100 /@sondage.questions.length
+.progress
+  .progress-bar.progress-bar-success.progress-bar-striped{:role => "progressbar", "aria-valuenow" => pourc.to_s, "aria-valuemin"=> "0", "aria-valuemax" => "100", :style => "width: " + pourc.to_s + "%; min-width:2%;"}
+    #{pourc.to_s}%
+
+%h4.center= @question.valeur
+= form_tag sondage_question_reponses_path(@sondage,@question), method: "post", class: "form_question" do
+  - if @question.champs_libre
+    - class_cb_ext = "extra_value"
+  - else
+    - class_cb_ext = ""
   - if @question.choix_multiple
     - @question.choixes.each do |c|
-      = check_box_tag(c.id)
+      %br
+      = check_box_tag c.id, nil, nil, class: class_cb_ext
       = label_tag(c.id, c.valeur)
       - if @question.champs_libre
-        = text_field_tag("valeur_" + c.id.to_s)
+        .exta_value
+          = text_field_tag("valeur_" + c.id.to_s)
+          %br
   - else
     - @question.choixes.each do |c|
-      = radio_button_tag(@question.id, c.id)
+      %br
+      = radio_button_tag @question.id, c.id, nil, class: class_cb_ext
       = label_tag(@question.id.to_s + "_" + c.id.to_s, c.valeur)
       - if @question.champs_libre
-        = text_field_tag("valeur_" + c.id.to_s)
+        .exta_value
+          = text_field_tag("valeur_" + c.id.to_s)
+          %br
+  %br
+  %br
   - if @question == @sondage.questions.last
-    = button_tag("Terminer le sondage")
+    = button_tag "Terminer le sondage", class: "center btn btn-success"
   - else
-    = button_tag("Suivant")
+    = button_tag "Suivant →", class: "center btn btn-success"
 

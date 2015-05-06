@@ -20,7 +20,7 @@ class ReponsesController < ApplicationController
         Reponse.create user_id: current_user.id, choix_id: params[@question.id.to_s], valeur: params["valeur_"+params[@question.id.to_s]]
       end
     end
-
+    session["next_question"] += 1
     if session["next_question"] < @sondage.questions.length
       redirect_to sondage_question_path(@sondage, @sondage.questions[session["next_question"]])
     else
