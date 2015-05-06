@@ -3,6 +3,13 @@ class SondagesController < ApplicationController
 
   def index
     @sondages = Sondage.all
+    @i=0
+    sondages = Sondage.all
+    sondages.each do |s|
+      if s.questions.count > 0
+        @i += 1
+      end
+    end
   end
 
   def show
@@ -18,4 +25,16 @@ class SondagesController < ApplicationController
   def redirect_to_index
     redirect_to sondages_path
   end
+
+  def self.count_sondage
+    @i=0
+    sondages = Sondage.all
+    sondages.each do |s|
+      if s.questions.count > 0
+        @i += 1
+      end
+    end
+    return @i
+  end
+
 end

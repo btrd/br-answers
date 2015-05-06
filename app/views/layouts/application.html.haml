@@ -14,13 +14,15 @@
           = link_to "Beam Rainbow", root_path, class: "rainbow"
         - if notice
           %p.alert.alert-success= notice
-        - if alert
-          %p.alert.alert-warning= alert
+        - if user_signed_in?
+          - if alert
+            %p.alert.alert-warning= alert
         %p.navbar
           - if user_signed_in?
-            Connecté en tant que
-            %strong= current_user.email
-            = link_to 'Profil', edit_user_registration_path, class: 'btn btn-success'
+            - nbs = SondagesController.count_sondage - current_user.sondages.length
+            - snbs = 'Sondages (' + nbs.to_s + ')'
+            = link_to snbs, sondages_path , class: 'btn btn-success'
+            = link_to 'Profil ' + current_user.email, edit_user_registration_path, class: 'btn btn-success'
             = link_to "Déconnexion", destroy_user_session_path, method: :delete, class: 'btn btn-warning'
           - else
             = link_to "S'inscrire", new_user_registration_path, class: 'btn btn-success'
