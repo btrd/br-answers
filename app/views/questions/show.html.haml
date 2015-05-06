@@ -1,22 +1,20 @@
+%h3= @sondage.nom
 %h4= @question.valeur
 = form_tag(sondage_question_reponses_path(@sondage,@question), method: "post") do
   - if @question.choix_multiple
     - @question.choixes.each do |c|
-      .input-group
-        .input-group-addon
-          = check_box_tag(c.id)
-        = label_tag(c.id, c.valeur)
-        - if @question.champs_libre
-          = text_field_tag("valeur_" + c.id.to_s)
+      = check_box_tag(c.id)
+      = label_tag(c.id, c.valeur)
+      - if @question.champs_libre
+        = text_field_tag("valeur_" + c.id.to_s)
   - else
     - @question.choixes.each do |c|
-      .input-group
-        .input-group-addon
-          = radio_button_tag(@question.id, c.id)
-          = label_tag(@question.id.to_s + "_" + c.id.to_s, c.valeur)
-        - if @question.champs_libre
-          = text_field_tag("valeur_" + c.id.to_s)
+      = radio_button_tag(@question.id, c.id)
+      = label_tag(@question.id.to_s + "_" + c.id.to_s, c.valeur)
+      - if @question.champs_libre
+        = text_field_tag("valeur_" + c.id.to_s)
   - if @question == @sondage.questions.last
     = button_tag("Terminer le sondage")
   - else
     = button_tag("Suivant")
+

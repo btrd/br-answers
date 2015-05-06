@@ -1,4 +1,4 @@
-%h2 Modifier mon profil
+%h3 Modifier mon profil
 .form_user
   = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
     = devise_error_messages!
@@ -51,5 +51,5 @@
       = f.number_field :revenus, min: 0
     .actions
       = f.submit "Mettre à jour", :class => 'btn btn-success'
-%h3 Annuler mon compte
+%br
 = button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Êtes vous sûr ?" }, method: :delete, :class => 'btn btn-danger'
