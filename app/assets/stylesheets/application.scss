@@ -24,19 +24,21 @@ $nprogress-zindex: 10100;
 @import "bootstrap";
 
 body {
-  h1 {
-    font-family: 'Nothing You Could Do', cursive;
-    font-size: 50px;
-  }
-  background: gainsboro;
+  background: rgb(233, 237, 225);
   .header {
     width: 100%;
     h1 {
-      text-align: center;
       a {
         text-decoration: none;
         color: black;
+        font-family: 'Nothing You Could Do', cursive;
+        font-size: 70px;
+        color: #f0ad4e;
       }
+    }
+    .navbar {
+      float: right;
+      margin-top: -55px;
     }
   }
   .content {

@@ -12,11 +12,6 @@
       .header
         %h1
           = link_to "Beam Rainbow", root_path, class: "rainbow"
-        - if notice
-          %p.alert.alert-success= notice
-        - if user_signed_in?
-          - if alert
-            %p.alert.alert-warning= alert
         %p.navbar
           - if user_signed_in?
             - nbs = SondagesController.count_sondage - current_user.sondages.length
@@ -27,5 +22,10 @@
           - else
             = link_to "S'inscrire", new_user_registration_path, class: 'btn btn-success'
             = link_to "Connexion", new_user_session_path, class: 'btn btn-success'
+        - if notice
+          %p.alert.alert-success= notice
+        - if user_signed_in?
+          - if alert
+            %p.alert.alert-warning= alert
       .content
         = yield
